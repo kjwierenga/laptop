@@ -1,11 +1,16 @@
 #!/usr/bin/env zsh
 
-echo "Checking for SSH key, generating one if it doesn't exist ..."
-  [[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa
+# KJW: disabled
+#echo "Checking for SSH key, generating one if it doesn't exist ..."
+#  [[ -f ~/.ssh/id_rsa.pub ]] || ssh-keygen -t rsa
 
-echo "Copying public key to clipboard. Paste it into your Github account ..."
-  [[ -f ~/.ssh/id_rsa.pub ]] && cat ~/.ssh/id_rsa.pub | pbcopy
-  open https://github.com/account/ssh
+# KJW: disabled
+#echo "Copying public key to clipboard. Paste it into your Github account ..."
+#  [[ -f ~/.ssh/id_rsa.pub ]] && cat ~/.ssh/id_rsa.pub | pbcopy
+#  open https://github.com/account/ssh
+
+echo "Running: sudo chown -R `whoami`:staff /usr/local"
+  sudo chown -R `whoami`:staff /usr/local
 
 echo "Installing Homebrew, a good OS X package manager ..."
   /usr/bin/ruby -e "$(/usr/bin/curl -fksSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)"
@@ -14,11 +19,15 @@ echo "Installing Homebrew, a good OS X package manager ..."
 echo "Put Homebrew location earlier in PATH ..."
   echo "
 # recommended by brew doctor
-export PATH='/usr/local/bin:$PATH'" >> ~/.zshrc
-  source ~/.zshrc
+export PATH='/usr/local/bin:$PATH'" >> ~/.bashrc
+  source ~/.bashrc
 
-echo "Installing Postgres, a good open source relational database ..."
-  brew install postgres --no-python
+echo "Installing git-flow"
+  brew install git-flow
+
+# KJW: disabled
+#echo "Installing Postgres, a good open source relational database ..."
+#  brew install postgres --no-python
 
 echo "Installing Redis, a good key-value database ..."
   brew install redis
@@ -29,18 +38,22 @@ echo "Installing ack, a good way to search through files ..."
 echo "Installing tmux, a good way to save project state and switch between projects ..."
   brew install tmux
 
-echo "Installing ImageMagick, good for cropping and re-sizing images ..."
-  brew install imagemagick
+# KJW: disabled
+#echo "Installing ImageMagick, good for cropping and re-sizing images ..."
+#  brew install imagemagick
 
-echo "Installing QT, used by Capybara Webkit for headless Javascript integration testing ..."
-  brew install qt
+# KJW: disabled
+#echo "Installing QT, used by Capybara Webkit for headless Javascript integration testing ..."
+#  brew install qt
 
 echo "Installing RVM (Ruby Version Manager) ..."
   bash -s stable < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer)
   echo "
 # RVM
-[[ -s '/Users/`whoami`/.rvm/scripts/rvm' ]] && source '/Users/`whoami`/.rvm/scripts/rvm'" >> ~/.zshrc
-  source ~/.zshrc
+[[ -s '/Users/`whoami`/.rvm/scripts/rvm' ]] && source '/Users/`whoami`/.rvm/scripts/rvm'" >> ~/.bashrc
+  source ~/.bashrc
 
-zsh < <(curl -s https://raw.github.com/thoughtbot/laptop/master/ruby)
-zsh < <(curl -s https://raw.github.com/thoughtbot/laptop/master/heroku)
+#bash < <(curl -s https://raw.github.com/kjwierenga/laptop/master/ruby)
+
+# KJW: disabled
+#zsh < <(curl -s https://raw.github.com/thoughtbot/laptop/master/heroku)
