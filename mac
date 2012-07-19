@@ -51,7 +51,7 @@ echo "Installing RVM (Ruby Version Manager) ..."
 [[ -s '/Users/`whoami`/.rvm/scripts/rvm' ]] && source '/Users/`whoami`/.rvm/scripts/rvm'" >> ~/.bashrc
   source ~/.bashrc
 
-#bash < <(curl -s https://raw.github.com/kjwierenga/laptop/master/ruby)
+bash < <(curl -s https://raw.github.com/kjwierenga/laptop/master/ruby)
 
 # KJW: disabled
 #zsh < <(curl -s https://raw.github.com/thoughtbot/laptop/master/heroku)
